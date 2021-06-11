@@ -38,33 +38,19 @@ public class GiveSpawners extends Messages {
         itemMeta.setLore(lore);
 
         switch (Messages.bukkitVersion) {
-            case "1.13":
+            case "1.13" -> {
                 itemStack.setItemMeta(itemMeta);
                 itemStack = ItemStack_1_13_R1.itemStack(itemStack, spawnerType);
                 itemStack.setItemMeta(itemStack.getItemMeta());
-                break;
-            case "1.13.1":
-            case "1.13.2":
+            }
+            case "1.13.1", "1.13.2" -> {
                 itemMeta.getCustomTagContainer().setCustomTag(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), ItemTagType.STRING, firstCapitalWord(spawnerType));
                 itemStack.setItemMeta(itemMeta);
-                break;
-            case "1.14":
-            case "1.14.1":
-            case "1.14.2":
-            case "1.14.3":
-            case "1.14.4":
-            case "1.15":
-            case "1.15.1":
-            case "1.15.2":
-            case "1.16":
-            case "1.16.1":
-            case "1.16.2":
-            case "1.16.3":
-            case "1.16.4":
-            case "1.16.5":
+            }
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5", "1.17" -> {
                 itemMeta.getPersistentDataContainer().set(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), PersistentDataType.STRING, firstCapitalWord(spawnerType));
                 itemStack.setItemMeta(itemMeta);
-
+            }
         }
         receiver.getInventory().addItem(itemStack);
         gave = gave.replaceAll("%amount%", spawnerAmount)

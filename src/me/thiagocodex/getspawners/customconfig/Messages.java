@@ -5,6 +5,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.CreatureSpawner;
+import org.bukkit.entity.Creature;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.GlowSquid;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -29,38 +33,21 @@ public abstract class Messages implements Listener {
     }
 
     public static String getSpawnedType(ItemStack itemStack) {
-        switch (bukkitVersion) {
-            case "1.13":
-                return firstCapitalWord(ItemStack_1_13_R1.getTag(itemStack));
-            case "1.13.1":
-            case "1.13.2":
-                return itemStack.getItemMeta().getCustomTagContainer()
-                        .getCustomTag(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), ItemTagType.STRING);
-            case "1.14":
-            case "1.14.1":
-            case "1.14.2":
-            case "1.14.3":
-            case "1.14.4":
-            case "1.15":
-            case "1.15.1":
-            case "1.15.2":
-            case "1.16":
-            case "1.16.1":
-            case "1.16.2":
-            case "1.16.3":
-            case "1.16.4":
-            case "1.16.5":
-                return itemStack.getItemMeta().getPersistentDataContainer()
-                        .get(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), PersistentDataType.STRING);
-        }
-        return null;
+        return switch (bukkitVersion) {
+            case "1.13" -> firstCapitalWord(ItemStack_1_13_R1.getTag(itemStack));
+            case "1.13.1", "1.13.2" -> itemStack.getItemMeta().getCustomTagContainer()
+                    .getCustomTag(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), ItemTagType.STRING);
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5", "1.17" -> itemStack.getItemMeta().getPersistentDataContainer()
+                    .get(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), PersistentDataType.STRING);
+            default -> null;
+        };
     }
 
     public static ItemStack getItemStack(String spawnerDisplayName, List<String> spawnerDisplayLore, String spawnedType) {
         ItemMeta itemMeta;
         ItemStack itemStack;
         switch (bukkitVersion) {
-            case "1.13":
+            case "1.13" -> {
                 itemStack = new ItemStack(Material.SPAWNER, 1);
                 itemStack = ItemStack_1_13_R1.itemStack(itemStack, spawnedType);
                 itemMeta = itemStack.getItemMeta();
@@ -68,8 +55,8 @@ public abstract class Messages implements Listener {
                 itemMeta.setLore(spawnerDisplayLore);
                 itemStack.setItemMeta(itemMeta);
                 return itemStack;
-            case "1.13.1":
-            case "1.13.2":
+            }
+            case "1.13.1", "1.13.2" -> {
                 itemStack = new ItemStack(Material.SPAWNER, 1);
                 itemMeta = itemStack.getItemMeta();
                 itemMeta.getCustomTagContainer().setCustomTag(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), ItemTagType.STRING, firstCapitalWord(spawnedType));
@@ -78,20 +65,8 @@ public abstract class Messages implements Listener {
                 itemMeta.setLore(spawnerDisplayLore);
                 itemStack.setItemMeta(itemMeta);
                 return itemStack;
-            case "1.14":
-            case "1.14.1":
-            case "1.14.2":
-            case "1.14.3":
-            case "1.14.4":
-            case "1.15":
-            case "1.15.1":
-            case "1.15.2":
-            case "1.16":
-            case "1.16.1":
-            case "1.16.2":
-            case "1.16.3":
-            case "1.16.4":
-            case "1.16.5":
+            }
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5" -> {
                 itemStack = new ItemStack(Material.SPAWNER, 1);
                 itemMeta = itemStack.getItemMeta();
                 itemMeta.setDisplayName(ChatColor.WHITE + spawnerDisplayName);
@@ -99,6 +74,7 @@ public abstract class Messages implements Listener {
                 itemMeta.getPersistentDataContainer().set(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), PersistentDataType.STRING, firstCapitalWord(spawnedType));
                 itemStack.setItemMeta(itemMeta);
                 return itemStack;
+            }
         }
         return null;
     }
@@ -127,43 +103,40 @@ public abstract class Messages implements Listener {
         List<String> versionMobs = new ArrayList<>();
         String[] mobs1_13 = {"Bat", "Blaze", "Cave_Spider", "Chicken", "Cod", "Cow", "Creeper", "Dolphin", "Donkey", "Drowned", "Elder_Guardian", "Ender_Dragon", "Enderman", "Endermite", "Evoker", "Ghast", "Giant", "Guardian", "Horse", "Husk", "Illusioner", "Iron_Golem", "Llama", "Magma_Cube", "Mooshroom", "Mule", "Ocelot", "Parrot", "Phantom", "Pig", "Polar_Bear", "Pufferfish", "Rabbit", "Salmon", "Sheep", "Shulker", "Silverfish", "Skeleton", "Skeleton_Horse", "Slime", "Snow_Golem", "Spider", "Squid", "Stray", "Tropical_Fish", "Turtle", "Vex", "Villager", "Vindicator", "Witch", "Wither", "Wither_Skeleton", "Wolf", "Zombie", "Zombie_Horse", "Zombie_Pigman", "Zombie_Villager"};
         switch (bukkitVersion) {
-            case "1.13":
-            case "1.13.1":
-            case "1.13.2":
-                Collections.addAll(versionMobs, mobs1_13);
-                break;
-            case "1.14":
-            case "1.14.1":
-            case "1.14.2":
-            case "1.14.3":
-            case "1.14.4":
+            case "1.13", "1.13.1", "1.13.2" -> Collections.addAll(versionMobs, mobs1_13);
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4" -> {
                 Collections.addAll(versionMobs, mobs1_13);
                 Collections.addAll(versionMobs, "Cat", "Fox", "Panda", "Pillager", "Ravager", "Trader_Llama", "Wandering_Trader");
-                break;
-            case "1.15":
-            case "1.15.1":
-            case "1.15.2":
+            }
+            case "1.15", "1.15.1", "1.15.2" -> {
                 Collections.addAll(versionMobs, mobs1_13);
                 Collections.addAll(versionMobs, "Cat", "Fox", "Panda", "Pillager", "Ravager", "Trader_Llama", "Wandering_Trader");
                 Collections.addAll(versionMobs, "Bee");
-                break;
-            case "1.16":
-            case "1.16.1":
+            }
+            case "1.16", "1.16.1" -> {
                 Collections.addAll(versionMobs, mobs1_13);
                 Collections.addAll(versionMobs, "Cat", "Fox", "Panda", "Pillager", "Ravager", "Trader_Llama", "Wandering_Trader");
                 Collections.addAll(versionMobs, "Bee");
                 Collections.addAll(versionMobs, "Hoglin", "Piglin", "Strider", "Zoglin", "Zombified_Piglin");
                 versionMobs.remove("Zombie_Pigman");
-                break;
-            case "1.16.2":
-            case "1.16.3":
-            case "1.16.4":
-            case "1.16.5":
+            }
+            case "1.16.2", "1.16.3", "1.16.4", "1.16.5" -> {
                 Collections.addAll(versionMobs, mobs1_13);
                 Collections.addAll(versionMobs, "Cat", "Fox", "Panda", "Pillager", "Ravager", "Trader_Llama", "Wandering_Trader");
                 Collections.addAll(versionMobs, "Bee");
                 Collections.addAll(versionMobs, "Hoglin", "Piglin", "Strider", "Zoglin", "Zombified_Piglin", "Piglin_Brute");
                 versionMobs.remove("Zombie_Pigman");
+            }
+
+            case "1.17" -> {
+                Collections.addAll(versionMobs, mobs1_13);
+                Collections.addAll(versionMobs, "Cat", "Fox", "Panda", "Pillager", "Ravager", "Trader_Llama", "Wandering_Trader");
+                Collections.addAll(versionMobs, "Bee");
+                Collections.addAll(versionMobs, "Hoglin", "Piglin", "Strider", "Zoglin", "Zombified_Piglin", "Piglin_Brute");
+                Collections.addAll(versionMobs, "Axolotl", "Glow_Squid", "Goat");
+                versionMobs.remove("Zombie_Pigman");
+            }
+
         }
         Collections.sort(versionMobs);
         return versionMobs.toString().

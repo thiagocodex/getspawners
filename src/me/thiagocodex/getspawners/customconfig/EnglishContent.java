@@ -104,7 +104,6 @@ abstract class EnglishContent {
             exception.printStackTrace();
         }
     }
-
     static void writeEnSpawnersContent(Path spawnersFile) {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(spawnersFile.toFile()), StandardCharsets.UTF_8));
@@ -112,6 +111,7 @@ abstract class EnglishContent {
                     "# If you want to change any line in any file, if the first character is '&' type between \"' '\"  e.g: '&6Blaze Spawner'\n" +
                     "# You're able to change spawners name whatever you want, but 2 not equals spawners names won't stack\n" +
                     "Spawner_Name:\n" +
+                    "  Axolotl: '&fAxolotl Spawner'\n" +
                     "  Bat: '&fBat Spawner'\n" +
                     "  Bee: '&fBee Spawner'\n" +
                     "  Blaze: '&fBlaze Spawner'\n" +
@@ -132,6 +132,8 @@ abstract class EnglishContent {
                     "  Fox: '&fFox Spawner'\n" +
                     "  Ghast: '&fGhast Spawner'\n" +
                     "  Giant: '&fGiant Spawner'\n" +
+                    "  Glow_Squid: '&fGlow_Squid Spawner'\n" +
+                    "  Goat: '&fGoat Spawner'\n" +
                     "  Guardian: '&fGuardian Spawner'\n" +
                     "  Hoglin: '&fHoglin Spawner'\n" +
                     "  Horse: '&fHorse Spawner'\n" +
@@ -190,6 +192,7 @@ abstract class EnglishContent {
                     "# so when you place it, won't work because have a different lore\n" +
                     "# The same thing will happen to the placed spawners, then I've to recommend you edit this in the beginning of your server\n" +
                     "Spawner_Lore:\n" +
+                    "  Axolotl: '&6Type: &aAXOLOTL, &eOwner: &f%owner%'\n" +
                     "  Bat: '&6Type: &aBAT, &eOwner: &f%owner%'\n" +
                     "  Bee: '&6Type: &aBEE, &eOwner: &f%owner%'\n" +
                     "  Blaze: '&6Type: &aBLAZE, &eOwner: &f%owner%'\n" +
@@ -210,6 +213,8 @@ abstract class EnglishContent {
                     "  Fox: '&6Type: &aFOX, &eOwner: &f%owner%'\n" +
                     "  Ghast: '&6Type: &aGHAST, &eOwner: &f%owner%'\n" +
                     "  Giant: '&6Type: &aGIANT, &eOwner: &f%owner%'\n" +
+                    "  Glow_Squid: '&6Type: &aGLOW_SQUID, &eOwner: &f%owner%'\n" +
+                    "  Goat: '&6Type: &aGOAT, &eOwner: &f%owner%'\n" +
                     "  Guardian: '&6Type: &aGUARDIAN, &eOwner: &f%owner%'\n" +
                     "  Hoglin: '&6Type: &aHOGLIN, &eOwner: &f%owner%'\n" +
                     "  Horse: '&6Type: &aHORSE, &eOwner: &f%owner%'\n" +
@@ -273,6 +278,7 @@ abstract class EnglishContent {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(mobsEnFile.toFile()), StandardCharsets.UTF_8));
             writer.write("# Change mob names which have been spawned by a not original spawner (placed by a player spawner)\n" +
                     "Custom_Mob_Name:\n" +
+                    "  Axolotl: '&fAxolotl'\n" +
                     "  Bat: '&fBat'\n" +
                     "  Bee: '&fBee'\n" +
                     "  Blaze: '&fBlaze'\n" +
@@ -293,6 +299,8 @@ abstract class EnglishContent {
                     "  Fox: '&fFox'\n" +
                     "  Ghast: '&fGhast'\n" +
                     "  Giant: '&fGiant'\n" +
+                    "  Glow_Squid: '&fGlow_Squid'\n" +
+                    "  Goat: '&fGoat'\n" +
                     "  Guardian: '&fGuardian'\n" +
                     "  Hoglin: '&fHoglin'\n" +
                     "  Horse: '&fHorse'\n" +

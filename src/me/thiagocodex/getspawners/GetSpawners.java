@@ -10,6 +10,7 @@ import me.thiagocodex.getspawners.nms_1_15_R1.UpdateSpawners_1_15_R1;
 import me.thiagocodex.getspawners.nms_1_16_R1.UpdateSpawners_1_16_R1;
 import me.thiagocodex.getspawners.nms_1_16_R2.UpdateSpawners_1_16_R2;
 import me.thiagocodex.getspawners.nms_1_16_R3.UpdateSpawners_1_16_R3;
+import me.thiagocodex.getspawners.nms_1_17_R1.UpdateSpawners_1_17_R1;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,37 +22,14 @@ public class GetSpawners extends JavaPlugin {
         new CheckLatest().getGSVersion();
         loadConfig();
         switch (Messages.bukkitVersion) {
-            case "1.13":
-                morphable = new UpdateSpawners_1_13_R1();
-                break;
-            case "1.13.1":
-            case "1.13.2":
-                morphable = new UpdateSpawners_1_13_R2();
-                break;
-            case "1.14":
-            case "1.14.1":
-            case "1.14.2":
-            case "1.14.3":
-            case "1.14.4":
-                morphable = new UpdateSpawners_1_14_R1();
-                break;
-            case "1.15":
-            case "1.15.1":
-            case "1.15.2":
-                morphable = new UpdateSpawners_1_15_R1();
-                break;
-            case "1.16":
-            case "1.16.1":
-                morphable = new UpdateSpawners_1_16_R1();
-                break;
-            case "1.16.2":
-            case "1.16.3":
-                morphable = new UpdateSpawners_1_16_R2();
-
-                break;
-            case "1.16.4":
-            case "1.16.5":
-                morphable = new UpdateSpawners_1_16_R3();
+            case "1.13" -> morphable = new UpdateSpawners_1_13_R1();
+            case "1.13.1", "1.13.2" -> morphable = new UpdateSpawners_1_13_R2();
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4" -> morphable = new UpdateSpawners_1_14_R1();
+            case "1.15", "1.15.1", "1.15.2" -> morphable = new UpdateSpawners_1_15_R1();
+            case "1.16", "1.16.1" -> morphable = new UpdateSpawners_1_16_R1();
+            case "1.16.2", "1.16.3" -> morphable = new UpdateSpawners_1_16_R2();
+            case "1.16.4", "1.16.5" -> morphable = new UpdateSpawners_1_16_R3();
+            case "1.17" -> morphable = new UpdateSpawners_1_17_R1();
         }
         getServer().getPluginManager().registerEvents(new ChangeSpawners(), this);
         getServer().getPluginManager().registerEvents(new CheckLatest(), this);

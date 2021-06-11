@@ -133,6 +133,7 @@ abstract class BrazilianPortugueseContent {
                     "# Você é capaz de alterar o nome dos geradores, mas 2 geradores do mesmo tipo, porém com nomes diferentes\n" +
                     "# não irão se juntar no seu inventário\n" +
                     "Spawner_Name:\n" +
+                    "  Axolotl: Gerador de Axolote\n" +
                     "  Bat: Gerador de Morcego\n" +
                     "  Bee: Gerador de Abelha\n" +
                     "  Blaze: Gerador de Blaze\n" +
@@ -153,6 +154,8 @@ abstract class BrazilianPortugueseContent {
                     "  Fox: Gerador de Raposa\n" +
                     "  Ghast: Gerador de Ghast\n" +
                     "  Giant: Gerador de Giant\n" +
+                    "  Glow_Squid: Gerador de Lula-Brilhante\n" +
+                    "  Goat: Gerador de Cabra\n" +
                     "  Guardian: Gerador de Guardião\n" +
                     "  Hoglin: Gerador de Hoglin\n" +
                     "  Horse: Gerador de Cavalo\n" +
@@ -211,6 +214,7 @@ abstract class BrazilianPortugueseContent {
                     "# pois eles tem o lore antigo, diferente desses que você mudou abaixo\n" +
                     "# Se você quiser alterar esses lores, recomendo que faça isso no início do seu servidor, enquanto ninguém tem geradores\n" +
                     "Spawner_Lore:\n" +
+                    "  Axolotl: '&eTipo: &Axolote, &eDono: &f%owner%'\n" +
                     "  Bat: '&eTipo: &aMorcego, &eDono: &f%owner%'\n" +
                     "  Bee: '&eTipo: &aAbelha, &eDono: &f%owner%'\n" +
                     "  Blaze: '&eTipo: &aBlaze, &eDono: &f%owner%'\n" +
@@ -231,6 +235,8 @@ abstract class BrazilianPortugueseContent {
                     "  Fox: '&eTipo: &aRaposa, &eDono: &f%owner%'\n" +
                     "  Ghast: '&eTipo: &aGhast, &eDono: &f%owner%'\n" +
                     "  Giant: '&eTipo: &aGiant, &eDono: &f%owner%'\n" +
+                    "  Glow_Squid: '&eTipo: &aLula-Brilhante, &eDono: &f%owner%'\n" +
+                    "  Goat: '&eTipo: &aCabra, &eDono: &f%owner%'\n" +
                     "  Guardian: '&eTipo: &aGuardião, &eDono: &f%owner%'\n" +
                     "  Hoglin: '&eTipo: &aHoglin, &eDono: &f%owner%'\n" +
                     "  Horse: '&eTipo: &aCavalo, &eDono: &f%owner%'\n" +
@@ -295,6 +301,7 @@ abstract class BrazilianPortugueseContent {
                     new FileOutputStream(mobsPtbrFile.toFile()), StandardCharsets.UTF_8));
             writer.write("# Mude o nome dos mobs que nascerem de um gerador não original (colocado por um jogador)\n" +
                     "Custom_Mob_Name:\n" +
+                    "  Axolotl: Axolote\n" +
                     "  Bat: Morcego\n" +
                     "  Bee: Abelha\n" +
                     "  Black_Cat: Gato Preto\n" +
@@ -316,6 +323,8 @@ abstract class BrazilianPortugueseContent {
                     "  Fox: Raposa\n" +
                     "  Ghast: Ghast\n" +
                     "  Giant: Giant\n" +
+                    "  Glow_Squid: Lula-Brilhante\n" +
+                    "  Goat: Cabra\n" +
                     "  Guardian: Guardião\n" +
                     "  Hoglin: Hoglin\n" +
                     "  Horse: Cavalo\n" +
