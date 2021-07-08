@@ -29,7 +29,7 @@ public class GetSpawners extends JavaPlugin {
             case "1.16", "1.16.1" -> morphable = new UpdateSpawners_1_16_R1();
             case "1.16.2", "1.16.3" -> morphable = new UpdateSpawners_1_16_R2();
             case "1.16.4", "1.16.5" -> morphable = new UpdateSpawners_1_16_R3();
-            case "1.17" -> morphable = new UpdateSpawners_1_17_R1();
+            case "1.17", "1.17.1", "1.17.2", "1.17.3", "1.17.4" -> morphable = new UpdateSpawners_1_17_R1();
         }
         getServer().getPluginManager().registerEvents(new ChangeSpawners(), this);
         getServer().getPluginManager().registerEvents(new CheckLatest(), this);

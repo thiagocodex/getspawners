@@ -37,7 +37,7 @@ public abstract class Messages implements Listener {
             case "1.13" -> firstCapitalWord(ItemStack_1_13_R1.getTag(itemStack));
             case "1.13.1", "1.13.2" -> itemStack.getItemMeta().getCustomTagContainer()
                     .getCustomTag(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), ItemTagType.STRING);
-            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5", "1.17" -> itemStack.getItemMeta().getPersistentDataContainer()
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5", "1.17", "1.17.1", "1.17.2", "1.17.3", "1.17.4" -> itemStack.getItemMeta().getPersistentDataContainer()
                     .get(new NamespacedKey(CustomConfig.getSpawners, "SpawnerType"), PersistentDataType.STRING);
             default -> null;
         };
@@ -66,7 +66,7 @@ public abstract class Messages implements Listener {
                 itemStack.setItemMeta(itemMeta);
                 return itemStack;
             }
-            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5", "1.17" -> {
+            case "1.14", "1.14.1", "1.14.2", "1.14.3", "1.14.4", "1.15", "1.15.1", "1.15.2", "1.16", "1.16.1", "1.16.2", "1.16.3", "1.16.4", "1.16.5", "1.17", "1.17.1", "1.17.2", "1.17.3", "1.17.4" -> {
                 itemStack = new ItemStack(Material.SPAWNER, 1);
                 itemMeta = itemStack.getItemMeta();
                 itemMeta.setDisplayName(ChatColor.WHITE + spawnerDisplayName);
@@ -128,7 +128,7 @@ public abstract class Messages implements Listener {
                 versionMobs.remove("Zombie_Pigman");
             }
 
-            case "1.17" -> {
+            case "1.17", "1.17.1", "1.17.2", "1.17.3", "1.17.4" -> {
                 Collections.addAll(versionMobs, mobs1_13);
                 Collections.addAll(versionMobs, "Cat", "Fox", "Panda", "Pillager", "Ravager", "Trader_Llama", "Wandering_Trader");
                 Collections.addAll(versionMobs, "Bee");
